@@ -3,86 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Pet Shop</title>
+    <title>iPaw - Israel Pet Owners Community</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Pacifico&display=swap">
 </head>
 <body>
+    <div id="welcome-banner" class="welcome-banner">
+        <div class="banner-content">
+            <h2>Welcome to iPaw!</h2>
+            <p>The new Israel pet owners community</p>
+            <button id="close-banner">Close</button>
+        </div>
+    </div>
+
     <header>
         <div class="container">
             <div class="logo">
-                <img src="logo.png" alt="Pet Shop Logo">
+                <img src="ipaw-logo.png" alt="iPaw Logo">
             </div>
             <nav>
                 <ul>
                     <li><a href="#home">Home</a></li>
-                    <li><a href="#shop">Shop</a></li>
-                    <li><a href="#about">About Us</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropbtn">Categories</a>
+                        <div class="dropdown-content">
+                            <a href="#dogs">Dogs</a>
+                            <a href="#cats">Cats</a>
+                            <a href="#small-pets">Small Pets</a>
+                            <a href="#fish">Fish</a>
+                        </div>
+                    </li>
                     <li><a href="#services">Services</a></li>
+                    <li><a href="#community">Community</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
         </div>
     </header>
-
+    
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1>Welcome to [Your Pet Shop]</h1>
-            <p>Your one-stop shop for all things pets!</p>
-            <a href="#shop" class="cta-button">Shop Now</a>
+            <h1>Welcome to iPaw</h1>
+            <p>Your one-stop destination for all things pets in Israel!</p>
+            <a href="#categories" class="cta-button">Explore Categories</a>
         </div>
     </section>
 
-    <section id="shop" class="shop">
+    <section id="categories" class="categories">
         <div class="container">
-            <h2>Our Products</h2>
-            <div class="product-grid">
-                <div class="product-card">
-                    <img src="dog1-ai.jpg" alt="Dog Product 1">
-                    <h3>Dog Toy</h3>
-                    <p>Durable and fun toy for your furry friend.</p>
+            <h2>Shop by Category</h2>
+            <div class="category-grid">
+                <div class="category-card">
+                    <img src="dog-category.jpg" alt="Dogs">
+                    <h3>Dogs</h3>
                 </div>
-                <div class="product-card">
-                    <img src="cat1-ai.jpg" alt="Cat Product 2">
-                    <h3>Cat Bed</h3>
-                    <p>Comfortable bed for your cat to relax.</p>
+                <div class="category-card">
+                    <img src="cat-category.jpg" alt="Cats">
+                    <h3>Cats</h3>
+                </div>
+                <div class="category-card">
+                    <img src="small-pets-category.jpg" alt="Small Pets">
+                    <h3>Small Pets</h3>
+                </div>
+                <div class="category-card">
+                    <img src="fish-category.jpg" alt="Fish">
+                    <h3>Fish</h3>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="about" class="about">
-        <div class="container">
-            <h2>About Us</h2>
-            <p>Learn more about our mission and values.</p>
-        </div>
-    </section>
-
-    <section id="services" class="services">
-        <div class="container">
-            <h2>Our Services</h2>
-            <p>Discover the range of services we offer for pets.</p>
-        </div>
-    </section>
-
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2>Contact Us</h2>
-            <form>
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-                <label for="message">Message:</label>
-                <textarea id="message" name="message" required></textarea>
-                <button type="submit">Send</button>
-            </form>
-        </div>
-    </section>
+    <!-- Add more sections as needed -->
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 [Your Pet Shop]. All rights reserved.</p>
+            <p>&copy; 2024 iPaw - Israel Pet Owners Community. All rights reserved.</p>
         </div>
     </footer>
 
