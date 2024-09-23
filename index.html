@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>iPaw - Israel Pet Owners Community</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Pacifico&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600&family=Suez+One&display=swap">
 </head>
 <body>
     <div id="welcome-banner" class="welcome-banner">
         <div class="banner-content">
             <h2>Welcome to iPaw!</h2>
-            <p>The new Israel pet owners community</p>
+            <p>The new Israel pet owners community <img src="israel-flag.png" alt="Israel Flag" class="flag-icon"></p>
             <button id="close-banner">Close</button>
         </div>
     </div>
@@ -21,7 +21,12 @@
             <div class="logo">
                 <img src="ipaw-logo.png" alt="iPaw Logo">
             </div>
-            <nav>
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav id="main-nav">
                 <ul>
                     <li><a href="#home">Home</a></li>
                     <li class="dropdown">
@@ -41,58 +46,60 @@
         </div>
     </header>
     
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>Welcome to iPaw</h1>
-            <p>Your one-stop destination for all things pets in Israel!</p>
-            <a href="#categories" class="cta-button">Explore Categories</a>
-        </div>
-    </section>
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>Welcome to iPaw</h1>
+                <p>Your one-stop destination for all things pets in Israel!</p>
+                <a href="#categories" class="cta-button">Explore Categories</a>
+            </div>
+        </section>
 
-    <section id="categories" class="categories">
-        <div class="container">
-            <h2>Shop by Category</h2>
-            <div class="category-grid">
-                <div class="category-card">
-                    <img src="dog-category.jpg" alt="Dogs">
-                    <h3>Dogs</h3>
-                </div>
-                <div class="category-card">
-                    <img src="cat-category.jpg" alt="Cats">
-                    <h3>Cats</h3>
-                </div>
-                <div class="category-card">
-                    <img src="small-pets-category.jpg" alt="Small Pets">
-                    <h3>Small Pets</h3>
-                </div>
-                <div class="category-card">
-                    <img src="fish-category.jpg" alt="Fish">
-                    <h3>Fish</h3>
+        <section id="categories" class="categories">
+            <div class="container">
+                <h2>Shop by Category</h2>
+                <div class="category-grid">
+                    <div class="category-card">
+                        <img src="dog-category.jpg" alt="Dogs">
+                        <h3>Dogs</h3>
+                    </div>
+                    <div class="category-card">
+                        <img src="cat-category.jpg" alt="Cats">
+                        <h3>Cats</h3>
+                    </div>
+                    <div class="category-card">
+                        <img src="small-pets-category.jpg" alt="Small Pets">
+                        <h3>Small Pets</h3>
+                    </div>
+                    <div class="category-card">
+                        <img src="fish-category.jpg" alt="Fish">
+                        <h3>Fish</h3>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="services" class="services">
-        <div class="container">
-            <h2>Our Services</h2>
-            <!-- Add content for services section -->
-        </div>
-    </section>
+        <section id="services" class="services">
+            <div class="container">
+                <h2>Our Services</h2>
+                <!-- Add content for services section -->
+            </div>
+        </section>
 
-    <section id="community" class="community">
-        <div class="container">
-            <h2>Join Our Community</h2>
-            <!-- Add content for community section -->
-        </div>
-    </section>
+        <section id="community" class="community">
+            <div class="container">
+                <h2>Join Our Community</h2>
+                <!-- Add content for community section -->
+            </div>
+        </section>
 
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2>Contact Us</h2>
-            <!-- Add a contact form or contact information -->
-        </div>
-    </section>
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2>Contact Us</h2>
+                <!-- Add a contact form or contact information -->
+            </div>
+        </section>
+    </main>
 
     <footer>
         <div class="container">
