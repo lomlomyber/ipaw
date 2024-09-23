@@ -4,10 +4,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
     const mainNav = document.getElementById('main-nav');
 
-    // Show the welcome banner after a short delay
-    setTimeout(() => {
-        welcomeBanner.classList.add('show');
-    }, 1000);
+    // Show the welcome banner immediately
+    welcomeBanner.classList.add('show');
 
     // Close the banner when the close button is clicked
     closeBanner.addEventListener('click', () => {
@@ -33,9 +31,14 @@ document.addEventListener('DOMContentLoaded', function() {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
 
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
         });
     });
 
@@ -52,4 +55,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Responsive behavior for window resize
     window.addEventListener('resize', () => {
         if (window.innerWidth > 768) {
-            mainNav.classList.remove('
+            mainNav.classList.remove('show');
+            mobileMenuToggle.classList.remove('active');
+        }
+    });
+});
