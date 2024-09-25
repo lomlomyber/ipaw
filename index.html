@@ -3,110 +3,364 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iPaw - Israel Pet Owners Community</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600&family=Suez+One&display=swap">
+    <title>iPaw - Your One-Stop Pet Equipment Shop</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .header, .search-bar, .category-section, .featured-section, .products-section, .membership-section, .map-section, .analytics-section, .recommendations-section, .auth-section {
+            padding: 2rem;
+        }
+        .header {
+            background-image: url('/api/placeholder/1200/400');
+            background-size: cover;
+            color: white;
+            text-align: center;
+        }
+        .search-bar {
+            background: white;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .search-bar input, .search-bar select {
+            padding: 0.75rem;
+            margin-right: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        .search-bar button, .auth-form button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+        .search-bar button:hover, .auth-form button:hover {
+            background: #45a049;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        .item {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .item:hover {
+            transform: translateY(-5px);
+        }
+        .item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .item-details {
+            padding: 1.5rem;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #2C3E50;
+        }
+        .map-container {
+            height: 400px;
+            background-color: #e9e9e9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+        }
+        .analytics-container, .auth-form {
+            background-color: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .auth-form input {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        .recommendations {
+            background-color: #f0f8ff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+        }
+        .category-item {
+            position: relative;
+            height: 250px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .category-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+        .category-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        .category-item:hover img {
+            transform: scale(1.1);
+        }
+        .category-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
+            padding: 1.5rem;
+            color: white;
+            font-weight: bold;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+        .category-item:nth-child(1) { background-color: #FF6B6B; }
+        .category-item:nth-child(2) { background-color: #4ECDC4; }
+        .category-item:nth-child(3) { background-color: #45B7D1; }
+        .category-item:nth-child(4) { background-color: #FFA07A; }
+        .category-item:nth-child(5) { background-color: #98D8C8; }
+        .category-item:nth-child(6) { background-color: #F7B801; }
+    </style>
 </head>
 <body>
-    <div id="welcome-banner" class="welcome-banner">
-        <div class="banner-content">
-            <h2>Welcome to iPaw!</h2>
-            <p>The new Israel pet owners community <img src="israel-flag.png" alt="Israel Flag" class="flag-icon"></p>
-            <button id="close-banner">Close</button>
-        </div>
-    </div>
-
-    <header>
-        <div class="container">
-            <div class="logo">
-                <img src="ipaw-logo.png" alt="iPaw Logo">
-            </div>
-            <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <nav id="main-nav">
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropbtn">Categories</a>
-                        <div class="dropdown-content">
-                            <a href="#dogs">Dogs</a>
-                            <a href="#cats">Cats</a>
-                            <a href="#small-pets">Small Pets</a>
-                            <a href="#fish">Fish</a>
-                        </div>
-                    </li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#community">Community</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
+    <header class="header">
+        <h1>iPaw</h1>
+        <p>Your One-Stop Pet Equipment Shop</p>
+        <div class="search-bar">
+            <input type="text" placeholder="What are you looking for?">
+            <select>
+                <option>All Categories</option>
+                <option>Dog Supplies</option>
+                <option>Cat Supplies</option>
+                <option>Fish Supplies</option>
+                <option>Small Pet Supplies</option>
+                <option>Bird Supplies</option>
+                <option>Reptile Supplies</option>
+            </select>
+            <button>Search</button>
         </div>
     </header>
-    
-    <main>
-        <section id="home" class="hero">
-            <div class="hero-content">
-                <h1>Welcome to iPaw</h1>
-                <p>Your one-stop destination for all things pets in Israel!</p>
-                <a href="#categories" class="cta-button">Explore Categories</a>
-            </div>
-        </section>
 
-        <section id="categories" class="categories">
-            <div class="container">
-                <h2>Shop by Category</h2>
-                <div class="category-grid">
-                    <div class="category-card">
-                        <img src="dog-category.jpg" alt="Dogs">
-                        <h3>Dogs</h3>
-                    </div>
-                    <div class="category-card">
-                        <img src="cat-category.jpg" alt="Cats">
-                        <h3>Cats</h3>
-                    </div>
-                    <div class="category-card">
-                        <img src="small-pets-category.jpg" alt="Small Pets">
-                        <h3>Small Pets</h3>
-                    </div>
-                    <div class="category-card">
-                        <img src="fish-category.jpg" alt="Fish">
-                        <h3>Fish</h3>
-                    </div>
+    <section class="auth-section">
+        <h2>Join iPaw Community</h2>
+        <div class="grid">
+            <div class="auth-form">
+                <h3>Register</h3>
+                <form>
+                    <input type="text" placeholder="Full Name" required>
+                    <input type="email" placeholder="Email" required>
+                    <input type="password" placeholder="Password" required>
+                    <button type="submit">Sign Up</button>
+                </form>
+            </div>
+            <div class="auth-form">
+                <h3>Login</h3>
+                <form>
+                    <input type="email" placeholder="Email" required>
+                    <input type="password" placeholder="Password" required>
+                    <button type="submit">Log In</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="category-section">
+        <h2>Shop by Category</h2>
+        <div class="category-grid">
+            <div class="category-item">
+                <img src="/api/placeholder/250/250" alt="Dog Supplies">
+                <div class="category-overlay">
+                    <h3>Dog Supplies</h3>
                 </div>
             </div>
-        </section>
-
-        <section id="services" class="services">
-            <div class="container">
-                <h2>Our Services</h2>
-                <!-- Add content for services section -->
+            <div class="category-item">
+                <img src="/api/placeholder/250/250" alt="Cat Supplies">
+                <div class="category-overlay">
+                    <h3>Cat Supplies</h3>
+                </div>
             </div>
-        </section>
-
-        <section id="community" class="community">
-            <div class="container">
-                <h2>Join Our Community</h2>
-                <!-- Add content for community section -->
+            <div class="category-item">
+                <img src="/api/placeholder/250/250" alt="Fish Supplies">
+                <div class="category-overlay">
+                    <h3>Fish Supplies</h3>
+                </div>
             </div>
-        </section>
-
-        <section id="contact" class="contact">
-            <div class="container">
-                <h2>Contact Us</h2>
-                <!-- Add a contact form or contact information -->
+            <div class="category-item">
+                <img src="/api/placeholder/250/250" alt="Small Pet Supplies">
+                <div class="category-overlay">
+                    <h3>Small Pet Supplies</h3>
+                </div>
             </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 iPaw - Israel Pet Owners Community. All rights reserved.</p>
+            <div class="category-item">
+                <img src="/api/placeholder/250/250" alt="Bird Supplies">
+                <div class="category-overlay">
+                    <h3>Bird Supplies</h3>
+                </div>
+            </div>
+            <div class="category-item">
+                <img src="/api/placeholder/250/250" alt="Reptile Supplies">
+                <div class="category-overlay">
+                    <h3>Reptile Supplies</h3>
+                </div>
+            </div>
         </div>
-    </footer>
+    </section>
 
-    <script src="script.js"></script>
+    <section class="featured-section">
+        <h2>Featured Products</h2>
+        <div class="grid">
+            <div class="item">
+                <img src="/api/placeholder/250/200" alt="Premium Dog Food">
+                <div class="item-details">
+                    <h3>Premium Dog Food</h3>
+                    <p>$29.99</p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="/api/placeholder/250/200" alt="Interactive Cat Toy">
+                <div class="item-details">
+                    <h3>Interactive Cat Toy</h3>
+                    <p>$14.99</p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="/api/placeholder/250/200" alt="Aquarium Starter Kit">
+                <div class="item-details">
+                    <h3>Aquarium Starter Kit</h3>
+                    <p>$49.99</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="recommendations-section">
+        <h2>Recommended for You</h2>
+        <div class="grid">
+            <div class="item">
+                <img src="/api/placeholder/250/200" alt="Eco-friendly Dog Bed">
+                <div class="item-details">
+                    <h3>Eco-friendly Dog Bed</h3>
+                    <p>$39.99</p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="/api/placeholder/250/200" alt="Automatic Cat Feeder">
+                <div class="item-details">
+                    <h3>Automatic Cat Feeder</h3>
+                    <p>$54.99</p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="/api/placeholder/250/200" alt="Bird Cage Playground">
+                <div class="item-details">
+                    <h3>Bird Cage Playground</h3>
+                    <p>$79.99</p>
+                </div>
+            </div>
+        </div>
+        <div class="recommendations">
+            <h3>Why we recommend these</h3>
+            <p>Based on your browsing history and popular items among iPaw customers like you, we think you'll love these products. They're top-rated for quality and value!</p>
+        </div>
+    </section>
+
+    <section class="membership-section">
+        <h2>iPaw Membership Plans</h2>
+        <div class="grid">
+            <div class="item">
+                <div class="item-details">
+                    <h3>Basic Plan</h3>
+                    <p>$9.99/month</p>
+                    <ul>
+                        <li>10% off all products</li>
+                        <li>Free shipping on orders over $50</li>
+                        <li>Monthly iPaw newsletter</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-details">
+                    <h3>Premium Plan</h3>
+                    <p>$19.99/month</p>
+                    <ul>
+                        <li>20% off all products</li>
+                        <li>Free shipping on all orders</li>
+                        <li>Exclusive access to new iPaw products</li>
+                        <li>Quarterly pet care package</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-details">
+                    <h3>Business Plan</h3>
+                    <p>$49.99/month</p>
+                    <ul>
+                        <li>25% off all products</li>
+                        <li>Free shipping on all orders</li>
+                        <li>Dedicated iPaw account manager</li>
+                        <li>User analytics dashboard</li>
+                        <li>Priority listing in iPaw search results</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="map-section">
+        <h2>Find iPaw Stores Near You</h2>
+        <div class="map-container">
+            <p>Interactive map will be displayed here</p>
+            <!-- Placeholder for map integration -->
+        </div>
+    </section>
+
+    <section class="analytics-section">
+        <h2>Business Owner Analytics</h2>
+        <div class="analytics-container">
+            <h3>User Interactions for Your iPaw Business</h3>
+            <p>Total profile views: 1,234</p>
+            <p>Phone number clicks: 56</p>
+            <p>Direction requests: 78</p>
+            <p>Most popular products:</p>
+            <ol>
+                <li>Premium Dog Food</li>
+                <li>Interactive Cat Toy</li>
+                <li>Aquarium Starter Kit</li>
+            </ol>
+        </div>
+    </section>
 </body>
 </html>
